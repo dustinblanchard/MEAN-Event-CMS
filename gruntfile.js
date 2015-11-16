@@ -140,6 +140,7 @@ module.exports = function (grunt) {
     },
     sass: {
       dist: {
+        includePaths: ['public/lib/foundation-apps/scss/'],
         files: [{
           expand: true,
           src: defaultAssets.client.sass,

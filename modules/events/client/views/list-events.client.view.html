@@ -1,0 +1,30 @@
+<section ng-controller="EventsController" ng-init="find()">
+  <div class="row">
+    <div class="small-12 columns">
+      <h1 class="left">Events</h1>
+      <a href="#" class="button success right">Add</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <table>
+        <thead>
+          <tr>
+            <th width="200">Title</th>
+            <th>Description</th>
+            <th width="150">Start Date</th>
+            <th width="150">End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="event in events">
+            <td>{{event.title}}</td>
+            <td>{{event.description}}</td>
+            <td>{{event.startDate}}</td>
+            <td>{{event.endDate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
