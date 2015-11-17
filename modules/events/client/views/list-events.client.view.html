@@ -22,9 +22,8 @@
             <td>
               <a zf-open="{{::event._id}}">{{::event.title}}</a>
               <div zf-modal="" id="{{::event._id}}">
-              <a zf-close="" class="close-button">×</a>
-              <h3>{{event.title}}</h3>
-              <p>There were 3 Star Wars movies and Disney only made cartoons.</p>
+                <a zf-close="" class="close-button">×</a>
+                <event-item ng-event="event"></event-item>
               </div>
             </td>
             <td>{{::event.description}}</td>

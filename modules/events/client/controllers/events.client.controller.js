@@ -67,7 +67,7 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
         $scope.title= 'New Event';
         $scope.event = {
           startDate: new Date()
-        }
+        };
       }else {
         $scope.event = Events.get({
           eventId: $stateParams.eventId
