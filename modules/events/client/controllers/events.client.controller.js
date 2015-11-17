@@ -11,9 +11,9 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
       // Redirect after save
       event.$save(function (response) {
         $scope.submitting = false;
-        
+        $scope.formProcessing.success = true;
       }, function (errorResponse) {
-        $scope.error = errorResponse.data.message;
+        $scope.formProcessing.error = errorResponse.data.message;
       });
     };
     
@@ -22,10 +22,16 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
       var event = $scope.event;
 
       event.$update(function () {
-        $scope.submitting = false;
+        $scope.formProcessing.submitting = false;
+        $scope.formProcessing.success = true;
       }, function (errorResponse) {
-        $scope.error = errorResponse.data.message;
+        $scope.formProcessing.error = errorResponse.data.message;
       });
+    };
+    
+    //declare form scope
+    $scope.formProcessing = {
+      
     };
     
     //Submit event form
