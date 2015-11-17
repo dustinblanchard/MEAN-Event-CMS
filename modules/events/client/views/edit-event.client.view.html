@@ -19,8 +19,9 @@
           <input type="date" ng-model="event.startDate"  required />
         </label>
         <label>End Date
-          <input type="date" ng-model="event.endDate" min="{{event.startDate | date:'yyyy-MM-dd'}}" required />
+          <input type="date" name="endDate" ng-model="event.endDate" min="{{event.startDate | date:'yyyy-MM-dd'}}" required />
         </label>
+        <small class="error" ng-show="eventForm.endDate.$error.min">Start date must come before end date.</small>
       </div>
     </div>
     <br />
