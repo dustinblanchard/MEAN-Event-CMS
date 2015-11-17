@@ -31,24 +31,26 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
         $scope.error = errorResponse.data.message;
       });
     };
-
-    // Remove existing Article
-    $scope.remove = function (article) {
-      if (article) {
-        article.$remove();
-
-        for (var i in $scope.articles) {
-          if ($scope.articles[i] === article) {
-            $scope.articles.splice(i, 1);
-          }
+*/
+    // Delete event
+    $scope.delete = function (event) {
+      console.log(event);
+      event.$remove();
+      for (var i in $scope.events) {
+        if ($scope.events[i] === event) {
+          $scope.events.splice(i, 1);
         }
-      } else {
-        $scope.article.$remove(function () {
-          $location.path('articles');
-        });
       }
     };
-
+    
+    $scope.getEvent = function(event){ 
+      Events.get({
+        eventId: event._id
+      },function(res){
+        console.log(res);
+      });
+    };
+/*
     // Update existing Article
     $scope.update = function (isValid) {
       $scope.error = null;

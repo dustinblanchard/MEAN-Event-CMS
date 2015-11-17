@@ -74,7 +74,7 @@ exports.delete = function (req, res) {
  * List of events
  */
 exports.list = function (req, res) {
-  EventItem.find().sort('-created').populate('user', 'displayName').exec(function (err, events) {
+  EventItem.find().sort('-created').exec(function (err, events) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -96,7 +96,7 @@ exports.eventByID = function (req, res, next, id) {
     });
   }
 
-  event.findById(id).populate('user', 'displayName').exec(function (err, event) {
+  EventItem.findById(id).exec(function (err, event) {
     if (err) {
       return next(err);
     } else if (!event) {

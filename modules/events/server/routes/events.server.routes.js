@@ -12,7 +12,7 @@ module.exports = function (app) {
     .post(events.create);
 
   // Single article routes
-  app.route('/api/events/:articleId').all()
+  app.route('/api/events/:eventId').all()
     .get(events.read)
     .put(events.update)
     .delete(events.delete);

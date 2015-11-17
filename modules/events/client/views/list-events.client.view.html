@@ -20,7 +20,7 @@
         <tbody>
           <tr ng-repeat="event in events">
             <td>
-              <a href="#" data-reveal-id="myModal">{{event.title}}</a>
+              <a href="#" ng-click="getEvent(event);">{{event.title}}</a>
               <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
                 <h2 id="modalTitle">Awesome. I have it.</h2>
                 <p class="lead">Your couch.  It is mine.</p>
@@ -34,7 +34,7 @@
             <td>
               <ul class="button-group">
                 <li><a href="#" class="button secondary tiny">Edit</a></li>
-                <li><a href="#" class="button alert tiny">Delete</a></li>
+                <li><a href="#" class="button alert tiny" ng-click="delete(event);">Delete</a></li>
               </ul>
             </td>
           </tr>
