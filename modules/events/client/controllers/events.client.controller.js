@@ -67,12 +67,12 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
         $scope.error = errorResponse.data.message;
       });
     };
-
-    // Find a list of Articles
-    $scope.find = function () {
-      $scope.articles = Articles.query();
+    */
+    // List events
+    $scope.list = function () {
+      $scope.events = Events.query();
     };
-
+    /*
     // Find existing Article
     $scope.findOne = function () {
       $scope.article = Articles.get({

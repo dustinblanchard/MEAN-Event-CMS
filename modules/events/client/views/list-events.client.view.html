@@ -1,4 +1,4 @@
-<section ng-controller="EventsController" ng-init="find()">
+<section ng-controller="EventsController" ng-init="list()">
   <div class="row">
     <div class="small-12 columns">
       <h1 class="left">Events</h1>
@@ -14,14 +14,29 @@
             <th>Description</th>
             <th width="150">Start Date</th>
             <th width="150">End Date</th>
+            <th width="150">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="event in events">
-            <td>{{event.title}}</td>
+            <td>
+              <a href="#" data-reveal-id="myModal">{{event.title}}</a>
+              <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <h2 id="modalTitle">Awesome. I have it.</h2>
+                <p class="lead">Your couch.  It is mine.</p>
+                <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+              </div>
+            </td>
             <td>{{event.description}}</td>
-            <td>{{event.startDate}}</td>
-            <td>{{event.endDate}}</td>
+            <td>{{event.startDate | date : 'shortDate'}}</td>
+            <td>{{event.endDate | date : 'shortDate'}}</td>
+            <td>
+              <ul class="button-group">
+                <li><a href="#" class="button secondary tiny">Edit</a></li>
+                <li><a href="#" class="button alert tiny">Delete</a></li>
+              </ul>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -74,7 +74,7 @@ exports.delete = function (req, res) {
  * List of events
  */
 exports.list = function (req, res) {
-  event.find().sort('-created').populate('user', 'displayName').exec(function (err, events) {
+  EventItem.find().sort('-created').populate('user', 'displayName').exec(function (err, events) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
