@@ -24,10 +24,12 @@ var EventSchema = new Schema({
     required: 'Title cannot be blank'
   },
   startDate: {
-    type: Date
+    type: Date,
+    required: 'Must have start date'
   },
   endDate: {
-    type: Date
+    type: Date,
+    required: 'Must have end date'
   },
   description: {
     type: String,

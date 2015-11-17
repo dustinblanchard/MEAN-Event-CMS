@@ -38,10 +38,13 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res) {
   var event = req.event;
-
+  
   event.title = req.body.title;
-  event.content = req.body.content;
+  event.description = req.body.description;
+  event.startDate = req.body.startDate;
+  event.endDate = req.body.endDate;
 
+  
   event.save(function (err) {
     if (err) {
       return res.status(400).send({

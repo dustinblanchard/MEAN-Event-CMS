@@ -2,7 +2,7 @@
   <div class="row">
     <div class="small-12 columns">
       <h1 class="left">Events</h1>
-      <a href="#" class="button success right">Add</a>
+      <a href="#" class="button success right" ui-sref="events.edit({ eventId: 'new' })">Add</a>
     </div>
   </div>
   <div class="row">
@@ -20,20 +20,19 @@
         <tbody>
           <tr ng-repeat="event in events">
             <td>
-              <a href="#" ng-click="getEvent(event);">{{event.title}}</a>
-              <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-                <h2 id="modalTitle">Awesome. I have it.</h2>
-                <p class="lead">Your couch.  It is mine.</p>
-                <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+              <a zf-open="{{::event._id}}">{{::event.title}}</a>
+              <div zf-modal="" id="{{::event._id}}">
+              <a zf-close="" class="close-button">×</a>
+              <h3>{{event.title}}</h3>
+              <p>There were 3 Star Wars movies and Disney only made cartoons.</p>
               </div>
             </td>
-            <td>{{event.description}}</td>
-            <td>{{event.startDate | date : 'shortDate'}}</td>
-            <td>{{event.endDate | date : 'shortDate'}}</td>
+            <td>{{::event.description}}</td>
+            <td>{{::event.startDate | date : 'shortDate'}}</td>
+            <td>{{::event.endDate | date : 'shortDate'}}</td>
             <td>
               <ul class="button-group">
-                <li><a href="#" class="button secondary tiny">Edit</a></li>
+                <li><a href="#" class="button secondary tiny" ui-sref="events.edit({ eventId: event._id })">Edit</a></li>
                 <li><a href="#" class="button alert tiny" ng-click="delete(event);">Delete</a></li>
               </ul>
             </td>

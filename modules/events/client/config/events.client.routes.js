@@ -14,13 +14,9 @@ angular.module('events').config(['$stateProvider',
         url: '',
         templateUrl: 'modules/events/client/views/list-events.client.view.html'
       })
-      .state('events.create', {
-        url: '/create',
-        templateUrl: 'modules/events/client/views/create-events.client.view.html'
-      })
       .state('events.edit', {
-        url: '/:eventId/edit',
-        templateUrl: 'modules/events/client/views/edit-events.client.view.html'
+        url: ':eventId/edit',
+        templateUrl: 'modules/events/client/views/edit-event.client.view.html'
       });
   }
 ]);

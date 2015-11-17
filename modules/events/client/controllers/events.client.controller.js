@@ -3,35 +3,47 @@
 // Articles controller
 angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Events',
   function ($scope, $stateParams, $location, Events) {
-/*
-    // Create new Article
-    $scope.create = function (isValid) {
-      $scope.error = null;
 
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
-
-        return false;
-      }
-
+    // Create Event
+    var newEvent = function(){
       // Create new Article object
-      var article = new Articles({
-        title: this.title,
-        content: this.content
-      });
-
+      var event = new Events($scope.event);
       // Redirect after save
-      article.$save(function (response) {
-        $location.path('articles/' + response._id);
-
-        // Clear form fields
-        $scope.title = '';
-        $scope.content = '';
+      event.$save(function (response) {
+        $scope.submitting = false;
+        
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
     };
-*/
+    
+    //edit event
+    var editEvent = function(){
+      var event = $scope.event;
+
+      event.$update(function () {
+        $scope.submitting = false;
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+    
+    //Submit event form
+    $scope.postEvent = function (isValid) {
+      $scope.error = null;
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'eventForm');
+
+        return false;
+      }
+      $scope.submitting = true;
+      if($stateParams.eventId === 'new'){
+        newEvent();
+      } else {
+        editEvent();
+      }
+    };
+    
     // Delete event
     $scope.delete = function (event) {
       console.log(event);
@@ -43,44 +55,26 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
       }
     };
     
-    $scope.getEvent = function(event){ 
-      Events.get({
-        eventId: event._id
-      },function(res){
-        console.log(res);
-      });
-    };
-/*
-    // Update existing Article
-    $scope.update = function (isValid) {
-      $scope.error = null;
-
-      if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
-
-        return false;
+    // Get single event
+    $scope.getEvent = function(){ 
+      if($stateParams.eventId === 'new'){
+        $scope.title= 'New Event';
+        $scope.event = {
+          startDate: new Date()
+        }
+      }else {
+        $scope.event = Events.get({
+          eventId: $stateParams.eventId
+        },function(res){
+          $scope.title = res.title;
+        });
       }
-
-      var article = $scope.article;
-
-      article.$update(function () {
-        $location.path('articles/' + article._id);
-      }, function (errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
     };
-    */
+
     // List events
     $scope.list = function () {
       $scope.events = Events.query();
     };
-    /*
-    // Find existing Article
-    $scope.findOne = function () {
-      $scope.article = Articles.get({
-        articleId: $stateParams.articleId
-      });
-    };
-    */
+    
   }
 ]);
