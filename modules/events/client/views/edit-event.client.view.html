@@ -1,6 +1,6 @@
 <section ng-controller="EventsController" ng-init="getEvent()">
   <div class="alert-box success" ng-show="formProcessing.success">
-    Event Added! <a href="#" ui-sref="events.list">Back to List</a>
+    Event Successfully Submitted! <a href="#" ui-sref="events.list">Back to List</a>
     <a href="#" class="close"  ng-click="formProcessing.success=false">&times;</a>
   </div>
   <div class="alert-box alert" ng-show="formProcessing.error">
