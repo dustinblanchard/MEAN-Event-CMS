@@ -1,7 +1,7 @@
 {
-  "name": "meanjs",
-  "description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
-  "homepage": "http://meanjs.org/",
+  "name": "Event CMS",
+  "description": "Event CMS test built on the MEAN stack",
+  "homepage": "http://www.dustinblanchard.com/",
   "license": "MIT",
   "dependencies": {
     "angular": "~1.3",
